@@ -13,6 +13,7 @@ from . import app  # Import Flask application
 # Health Endpoint
 ############################################################
 
+
 @app.route("/health")
 def health():
     """Health Status"""
@@ -72,7 +73,7 @@ def list_accounts():
     """
     app.logger.info("Request to list Accounts")
     accounts = Account.all()
-    account_list = [account.serialize() for account in accounts]        
+    account_list = [account.serialize() for account in accounts]
     app.logger.info(f"Returning {len(account_list)} accounts in the list")
     # return the list with a return code of status.HTTP_200_OK
     return jsonify(account_list), status.HTTP_200_OK
@@ -92,7 +93,7 @@ def read_account(account_id):
 
     account = Account.find(account_id)
     if not account:
-        abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")    
+        abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
     # return the serialize() version of the account with a return code of status.HTTP_200_OK
     return account.serialize(), status.HTTP_200_OK
 
@@ -133,7 +134,7 @@ def delete_accounts(account_id):
 
     account = Account.find(account_id)
     if account:
-        account.delete()    
+        account.delete()
     return "", status.HTTP_204_NO_CONTENT
 
 ######################################################################
