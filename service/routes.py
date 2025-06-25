@@ -29,7 +29,7 @@ def index():
     """Root URL response"""
     return (
         jsonify(
-            name="Account REST API Service",
+            name="Account REST API Service from Final Project",
             version="2.0",
             # paths=url_for("list_accounts", _external=True),
         ),
